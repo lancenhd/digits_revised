@@ -1,40 +1,33 @@
 <template name="Home_Page">
   <div class="ui middle aligned centered grid text container">
 
-    <table style ="margin-top: 40px;" class="ui celled table">
+    {{#if Template.subscriptionsReady}}
+    <table style="margin-top: 20px" class="ui celled table">
       <thead>
-      <tr><th>First</th>
+      <tr>
+        <th>First</th>
         <th>Last</th>
         <th>Address</th>
         <th>Phone</th>
         <th>Email</th>
-      </tr></thead>
-      <tbody>
-      <tr>
-        <td>Lancen </td>
-        <td>Daclison</td>
-        <td>94-1095 Kuhaulua St</td>
-        <td>808-342-3669</td>
-        <td>lancenhd@hawaii.edu</td>
       </tr>
-      <tr>
-        <td>Lancen </td>
-        <td>Daclison2</td>
-        <td>94-1095 Kuhaulua St</td>
-        <td>808-342-3669</td>
-        <td>lancenhd@hawaii.edu</td>
-      </tr>
-      <tr>
-        <td>Lancen </td>
-        <td>Daclison3</td>
-        <td>94-1095 Kuhaulua St</td>
-        <td>808-342-3669</td>
-        <td>lancenhd@hawaii.edu</td>
-      </tr>
+      </thead>
 
+      <tbody>
+      {{#each contact in contactsList}}
+      <tr>
+        <td>{{contact.first}}</td>
+        <td>{{contact.last}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.telephone}}</td>
+        <td>{{contact.email}}</td>
+      </tr>
+      {{/each}}
       </tbody>
     </table>
+    {{else}}
+    {{> Loading}}
+    {{/if}}
 
   </div>
-  <br>
 </template>
