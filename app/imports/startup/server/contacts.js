@@ -46,3 +46,5 @@ if (Contacts.find().count() === 0) {
     Contacts.insert(stuff);
   });
 }
+
+
