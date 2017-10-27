@@ -8,6 +8,13 @@ Template.Home_Page.helpers({
    */
   contactsList() {
     return Contacts.find();
+  }, starFavorite(field, contact) {
+    const contactData = Contacts.findOne(contact);
+    const icon = 'star icon';
+    if (contactData[field] === true) {
+      return icon;
+    }
+    return '';
   },
 });
 
