@@ -41,8 +41,8 @@ Template.Edit_Contact_Page.events({
     const address = event.target.Address.value;
     const telephone = event.target.Telephone.value;
     const email = event.target.Email.value;
-
-    const updatedContactData = { first, last, address, telephone, email };
+    const favorite = event.target.Favorite.checked;
+    const updatedContactData = { first, last, address, telephone, email, favorite };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedContactData reflects what will be inserted.

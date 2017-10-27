@@ -1,5 +1,5 @@
 <template name="Home_Page">
-  <div class="ui middle aligned centered grid text container">
+  <div class="ui container">
 
     {{#if Template.subscriptionsReady}}
     <table style="margin-top: 20px" class="ui celled table">
@@ -17,7 +17,11 @@
       <tbody>
       {{#each contact in contactsList}}
       <tr>
-        <td>{{contact.first}}</td>
+        <td>
+          {{contact.first}}
+          {{#if contact.favorite}}
+          <i class="star icon"></i>
+          {{/if}}</td>
         <td>{{contact.last}}</td>
         <td>{{contact.address}}</td>
         <td>{{contact.telephone}}</td>
