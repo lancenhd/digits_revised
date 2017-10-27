@@ -12,6 +12,7 @@ const contactSeeds = [
     address: '94-1095 Kuhaulua St',
     telephone: '808-342-3669',
     email: 'lancenhd@hawaii.edu',
+    group: 'Other',
   },
   {
     first: 'Lancen',
@@ -19,6 +20,7 @@ const contactSeeds = [
     address: '94-1095 Kuhaulua St',
     telephone: '808-342-3669',
     email: 'lancenhd@hawaii.edu',
+    group: 'Other',
   },
   {
     first: 'Lancen',
@@ -26,6 +28,7 @@ const contactSeeds = [
     address: '94-1095 Kuhaulua St',
     telephone: '808-342-3669',
     email: 'lancenhd@hawaii.edu',
+    group: 'Other',
   },
   {
     first: 'Lancen',
@@ -33,9 +36,8 @@ const contactSeeds = [
     address: '94-1095 Kuhaulua St',
     telephone: '808-342-3669',
     email: 'lancenhd@hawaii.edu',
+    group: 'Others',
   },
-  { name: 'Basket', quantity: 3 },
-  { name: 'Bicycle', quantity: 2 },
 ];
 
 /**

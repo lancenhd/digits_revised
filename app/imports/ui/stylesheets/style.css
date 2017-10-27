@@ -9,3 +9,18 @@ body {
 #login-buttons a, .accounts-dialog a {
   color: #ffffff
 }
+.Others tr{
+  background-color: lightblue;
+}
+
+.School tr{
+  background-color: lemonchiffon;
+}
+
+.Work tr{
+  background-color: lime;
+}
+
+.Friends tr{
+  background-color: hotpink;
+}

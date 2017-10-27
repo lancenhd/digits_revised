@@ -1,5 +1,5 @@
 <template name="Home_Page">
-  <div class="ui middle aligned centered grid text container">
+  <div class="ui container">
 
     {{#if Template.subscriptionsReady}}
     <table style="margin-top: 20px" class="ui celled table">
@@ -10,6 +10,7 @@
         <th>Address</th>
         <th>Phone</th>
         <th>Email</th>
+        <th>Group</th>
         <th>Edit</th>
       </tr>
       </thead>
@@ -22,6 +23,7 @@
         <td>{{contact.address}}</td>
         <td>{{contact.telephone}}</td>
         <td>{{contact.email}}</td>
+        <td>{{contact.group}}</td>
         <td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>
 
       </tr>

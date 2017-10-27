@@ -7,7 +7,7 @@ import { Contacts, ContactsSchema } from '../../api/contacts/contacts.js';
 /* eslint-disable no-param-reassign */
 
 const displayErrorMessages = 'displayErrorMessages';
-
+export const groups = ['School', 'Work', 'Family', 'Friends', 'Others'];
 Template.Edit_Contact_Page.onCreated(function onCreated() {
   this.subscribe('Contacts');
   this.messageFlags = new ReactiveDict();
@@ -29,6 +29,9 @@ Template.Edit_Contact_Page.helpers({
     const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
     return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
   },
+  groupChoice() {
+    return _.map(groups, function makeGroupObject(group) { return { label: group }; });
+  },
 });
 
 
@@ -41,8 +44,10 @@ Template.Edit_Contact_Page.events({
     const address = event.target.Address.value;
     const telephone = event.target.Telephone.value;
     const email = event.target.Email.value;
+    const group = event.target.Group.value;
 
-    const updatedContactData = { first, last, address, telephone, email };
+    const updatedContactData = { first, last, address, telephone, email, group };
+
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedContactData reflects what will be inserted.
