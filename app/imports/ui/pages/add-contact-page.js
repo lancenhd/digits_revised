@@ -9,6 +9,7 @@ import { Contacts, ContactsSchema } from '../../api/contacts/contacts.js';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Add_Contact_Page.onCreated(function onCreated() {
+  this.subscribe('Contacts');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
   this.context = ContactsSchema.namedContext('Add_Contact_Page');
@@ -25,7 +26,6 @@ Template.Add_Contact_Page.helpers({
   },
 });
 
-
 Template.Add_Contact_Page.events({
   'submit .contact-data-form'(event, instance) {
     event.preventDefault();
@@ -37,6 +37,7 @@ Template.Add_Contact_Page.events({
     const email = event.target.Email.value;
 
     const newContactData = { first, last, address, telephone, email };
+    const existing = Contacts.findOne({ first: first, last: last });
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newContactData reflects what will be inserted.
@@ -44,9 +45,14 @@ Template.Add_Contact_Page.events({
     // Determine validity.
     instance.context.validate(newContactData);
     if (instance.context.isValid()) {
-      Contacts.insert(newContactData);
-      instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('Home_Page');
+      if (existing === undefined) {
+        Contacts.insert(newContactData);
+        instance.messageFlags.set(displayErrorMessages, false);
+        FlowRouter.go('Home_Page');
+      }
+      else {
+        console.log('doppleganger');
+      }
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
